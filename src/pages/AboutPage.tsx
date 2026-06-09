@@ -41,8 +41,11 @@ const credentials = [
   },
 ];
 
+// delay > PageTransition duration (0.45s) to avoid flash on elements in initial viewport
+const PAGE_DELAY = 0.5
+
 const stagger = {
-  animate: { transition: { staggerChildren: 0.1 } },
+  animate: { transition: { staggerChildren: 0.1, delayChildren: PAGE_DELAY } },
 };
 const fadeUp = {
   initial: { opacity: 0, y: 24 },
@@ -89,9 +92,8 @@ export default function AboutPage() {
             <div>
               <motion.p
                 initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-60px" }}
-                transition={{ duration: 0.7 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.7, delay: PAGE_DELAY }}
                 className="font-sans font-light text-white/55 text-[15px] leading-relaxed mb-5">
                 Kancelaria świadczy usługi prawne na najwyższym poziomie, łącząc
                 dogłębną znajomość prawa z praktycznym doświadczeniem zdobytym w
@@ -101,9 +103,8 @@ export default function AboutPage() {
               </motion.p>
               <motion.p
                 initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-60px" }}
-                transition={{ duration: 0.7, delay: 0.1 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.7, delay: PAGE_DELAY + 0.1 }}
                 className="font-sans font-light text-white/55 text-[15px] leading-relaxed">
                 Stawiamy na długofalowe relacje oparte na zaufaniu i
                 przejrzystości. Każdy Klient otrzymuje jasną informację o stanie
@@ -116,9 +117,8 @@ export default function AboutPage() {
                 <motion.div
                   key={v.title}
                   initial={{ opacity: 0, y: 24 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, margin: "-40px" }}
-                  transition={{ duration: 0.6, delay: i * 0.1 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6, delay: PAGE_DELAY + i * 0.1 }}
                   className="glass p-6 hover:border-gold-500/25 transition-all duration-300">
                   <h3 className="font-serif text-lg text-gold-400 mb-2">
                     {v.title}
@@ -149,18 +149,18 @@ export default function AboutPage() {
             </span>
           </motion.div>
 
-          <div className="grid lg:grid-cols-5 gap-12 lg:gap-20 items-start">
+          <div className="grid lg:grid-cols-5 gap-12 lg:gap-20 items-stretch">
             {/* Photo */}
             <motion.div
               initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
-              className="lg:col-span-2"
+              className="lg:col-span-2 flex"
             >
-              <div className="relative max-w-[260px]">
+              <div className="relative max-w-[280px] w-full flex flex-col">
                 <div className="absolute -top-3 -left-3 w-full h-full border border-gold-500/20" />
-                <div className="relative bg-navy-800 overflow-hidden" style={{ height: '320px' }}>
+                <div className="relative bg-navy-800 overflow-hidden flex-1 min-h-[320px]">
                   <img
                     src="/Jacek.jpeg"
                     alt="r.pr. Jacek Dombkowski"
