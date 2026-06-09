@@ -121,7 +121,7 @@ export default function PracticePage() {
       {/* GRID */}
       <section className="relative py-16 lg:py-24">
         <div className="max-w-7xl mx-auto px-6 lg:px-12">
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 items-start">
             {areas.map((a, i) => (
               <motion.div
                 key={a.title}
@@ -130,7 +130,7 @@ export default function PracticePage() {
                 viewport={{ once: true, margin: '-40px' }}
                 transition={{ duration: 0.65, delay: i * 0.07 }}
                 onClick={() => setActive(active === i ? null : i)}
-                className={`glass p-7 cursor-pointer group transition-all duration-300 ${
+                className={`glass p-7 cursor-pointer group transition-colors duration-300 ${
                   active === i ? 'border-gold-500/40 bg-gold-500/5' : 'hover:border-gold-500/20'
                 }`}
               >
@@ -143,21 +143,26 @@ export default function PracticePage() {
                 <h3 className="font-serif text-xl text-white mb-3">{a.title}</h3>
                 <p className="font-sans text-[13px] text-white/45 leading-relaxed">{a.intro}</p>
 
-                {active === i && (
-                  <motion.ul
-                    initial={{ opacity: 0, height: 0 }}
-                    animate={{ opacity: 1, height: 'auto' }}
-                    transition={{ duration: 0.3 }}
-                    className="mt-5 pt-5 border-t border-gold-500/15 space-y-2.5 overflow-hidden"
-                  >
-                    {a.details.map((d) => (
-                      <li key={d} className="flex items-start gap-2.5">
-                        <span className="mt-1.5 w-1 h-1 rounded-full bg-gold-500 flex-shrink-0" />
-                        <span className="font-sans text-[12px] text-white/55 leading-relaxed">{d}</span>
-                      </li>
-                    ))}
-                  </motion.ul>
-                )}
+                <div
+                  style={{
+                    display: 'grid',
+                    gridTemplateRows: active === i ? '1fr' : '0fr',
+                    transition: 'grid-template-rows 0.35s ease',
+                  }}
+                >
+                  <ul className="overflow-hidden">
+                    <li className="mt-5 pt-5 border-t border-gold-500/15 list-none">
+                      <ul className="space-y-2.5">
+                        {a.details.map((d) => (
+                          <li key={d} className="flex items-start gap-2.5">
+                            <span className="mt-1.5 w-1 h-1 rounded-full bg-gold-500 flex-shrink-0" />
+                            <span className="font-sans text-[12px] text-white/55 leading-relaxed">{d}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </li>
+                  </ul>
+                </div>
               </motion.div>
             ))}
           </div>
