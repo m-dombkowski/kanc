@@ -4,6 +4,8 @@ import { Scale, Building2, Users, ShieldCheck, FileSearch, Stethoscope } from 'l
 import { NavLink } from 'react-router-dom'
 import PageTransition from '../components/PageTransition'
 
+const PAGE_DELAY = 0.5
+
 const areas = [
   {
     icon: Scale,
@@ -89,32 +91,26 @@ export default function PracticePage() {
         <div className="absolute inset-0 bg-gradient-to-br from-navy-950 via-navy-900 to-navy-950" />
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_80%_40%,rgba(201,165,90,0.06),transparent_65%)]" />
         <div className="relative max-w-7xl mx-auto px-6 lg:px-12">
-          <motion.div
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="flex items-center gap-4 mb-6"
+          <div
+            className="anim-fade-in-up flex items-center gap-4 mb-6"
+            style={{ animationDelay: `${PAGE_DELAY}s` }}
           >
             <div className="w-8 h-px bg-gold-500" />
             <span className="font-sans text-[11px] tracking-[0.3em] uppercase text-gold-400">Zakres praktyki</span>
-          </motion.div>
-          <motion.h1
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.85, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
-            className="font-serif font-light text-5xl lg:text-7xl text-white leading-[0.95] max-w-2xl"
+          </div>
+          <h1
+            className="anim-fade-in-up font-serif font-light text-5xl lg:text-7xl text-white leading-[0.95] max-w-2xl"
+            style={{ animationDelay: `${PAGE_DELAY + 0.1}s` }}
           >
             Dziedziny,{' '}
             <em className="text-gradient not-italic block">w których pomagamy.</em>
-          </motion.h1>
-          <motion.p
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.25 }}
-            className="mt-8 font-sans text-[13px] text-white/35 tracking-wide"
+          </h1>
+          <p
+            className="anim-fade-in-up mt-8 font-sans text-[13px] text-white/35 tracking-wide"
+            style={{ animationDelay: `${PAGE_DELAY + 0.2}s` }}
           >
             Kliknij obszar, aby zobaczyć szczegółowy zakres usług.
-          </motion.p>
+          </p>
         </div>
       </section>
 

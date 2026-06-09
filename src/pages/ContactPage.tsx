@@ -9,12 +9,20 @@ const info = [
   { icon: Clock, label: 'Godziny przyjęć', value: 'Pn–Pt: 9:00–17:00\nSoboty: po uzgodnieniu', href: '#' },
 ]
 
+// delay > PageTransition duration (0.45s) to avoid flash on elements in initial viewport
 const PAGE_DELAY = 0.5
 
-const fadeUp = (delay = 0) => ({
-  initial: { opacity: 0, y: 20 },
-  animate: { opacity: 1, y: 0, transition: { duration: 0.7, delay: PAGE_DELAY + delay, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] } },
-})
+const stagger = {
+  animate: { transition: { staggerChildren: 0.1, delayChildren: PAGE_DELAY } },
+}
+const fadeUp = {
+  initial: { opacity: 0, y: 24 },
+  animate: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.65, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] },
+  },
+}
 
 export default function ContactPage() {
   return (
@@ -24,14 +32,16 @@ export default function ContactPage() {
         <div className="absolute inset-0 bg-gradient-to-br from-navy-950 via-navy-900 to-navy-950" />
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_50%_80%,rgba(201,165,90,0.06),transparent_65%)]" />
         <div className="relative max-w-7xl mx-auto px-6 lg:px-12">
-          <motion.div {...fadeUp(0)} className="flex items-center gap-4 mb-6">
-            <div className="w-8 h-px bg-gold-500" />
-            <span className="font-sans text-[11px] tracking-[0.3em] uppercase text-gold-400">Kontakt</span>
+          <motion.div variants={stagger} initial="initial" animate="animate">
+            <motion.div variants={fadeUp} className="flex items-center gap-4 mb-6">
+              <div className="w-8 h-px bg-gold-500" />
+              <span className="font-sans text-[11px] tracking-[0.3em] uppercase text-gold-400">Kontakt</span>
+            </motion.div>
+            <motion.h1 variants={fadeUp} className="font-serif font-light text-5xl lg:text-7xl text-white leading-[0.95] max-w-2xl">
+              Porozmawiajmy{' '}
+              <em className="text-gradient not-italic block">o Twojej sprawie.</em>
+            </motion.h1>
           </motion.div>
-          <motion.h1 {...fadeUp(0.1)} className="font-serif font-light text-5xl lg:text-7xl text-white leading-[0.95] max-w-2xl">
-            Porozmawiajmy{' '}
-            <em className="text-gradient not-italic block">o Twojej sprawie.</em>
-          </motion.h1>
         </div>
       </section>
 
@@ -42,46 +52,39 @@ export default function ContactPage() {
 
             {/* LEFT — info + map placeholder */}
             <div>
-              <motion.p
-                initial={{ opacity: 0, y: 16 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.7 }}
-                className="font-sans font-light text-white/50 text-[15px] leading-relaxed mb-10"
+              <p
+                className="anim-fade-in-up font-sans font-light text-white/50 text-[15px] leading-relaxed mb-10"
+                style={{ animationDelay: `${PAGE_DELAY}s` }}
               >
                 Pierwsza konsultacja pozwala ocenić sytuację prawną i zaproponować
                 najlepsze rozwiązanie. Skontaktuj się telefonicznie, mailowo lub
                 wypełnij formularz — odpowiemy w ciągu 24 godzin.
-              </motion.p>
+              </p>
 
               <div className="grid sm:grid-cols-2 gap-4 mb-10">
                 {info.map((item, i) => (
-                  <motion.a
+                  <a
                     key={item.label}
                     href={item.href}
-                    initial={{ opacity: 0, y: 16 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.6, delay: PAGE_DELAY + i * 0.08 }}
-                    className="glass p-5 group hover:border-gold-500/25 transition-all duration-300 block"
+                    className="anim-fade-in-up glass p-5 group hover:border-gold-500/25 transition-all duration-300 block"
+                    style={{ animationDelay: `${PAGE_DELAY + i * 0.08}s` }}
                   >
                     <item.icon size={15} className="text-gold-500 mb-3" />
                     <p className="font-sans text-[10px] tracking-[0.2em] uppercase text-white/30 mb-1">{item.label}</p>
                     <p className="font-sans text-[13px] text-white/70 leading-relaxed whitespace-pre-line group-hover:text-white/90 transition-colors">
                       {item.value}
                     </p>
-                  </motion.a>
+                  </a>
                 ))}
               </div>
 
               {/* Map placeholder */}
-              <motion.div
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ duration: 0.7, delay: PAGE_DELAY + 0.3 }}
-                className="glass h-48 flex items-center justify-center"
+              <div
+                className="anim-fade-in-up glass h-48 flex items-center justify-center"
+                style={{ animationDelay: `${PAGE_DELAY + 0.35}s` }}
               >
                 <p className="font-sans text-[12px] text-white/20 tracking-widest uppercase">Mapa — Google Maps embed</p>
-              </motion.div>
+              </div>
             </div>
 
             {/* RIGHT — form */}
