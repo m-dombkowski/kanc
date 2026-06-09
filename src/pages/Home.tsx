@@ -210,8 +210,8 @@ export default function Home() {
               {practiceShort.map((area, i) => (
                 <motion.div
                   key={area}
-                  initial={{ opacity: 0, scale: 0.92 }}
-                  whileInView={{ opacity: 1, scale: 1 }}
+                  initial={{ opacity: 0, y: 14 }}
+                  whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true, margin: '-60px' }}
                   transition={{ duration: 0.5, delay: i * 0.07 }}
                   className="glass px-5 py-3 text-[13px] font-sans text-white/60 hover:text-gold-400 hover:border-gold-500/30 transition-all duration-300 cursor-default"
@@ -220,8 +220,8 @@ export default function Home() {
                 </motion.div>
               ))}
               <motion.div
-                initial={{ opacity: 0, scale: 0.92 }}
-                whileInView={{ opacity: 1, scale: 1 }}
+                initial={{ opacity: 0, y: 14 }}
+                whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: 0.5 }}
               >
