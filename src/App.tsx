@@ -3,6 +3,7 @@ import { AnimatePresence } from 'framer-motion'
 import Navbar from './components/Navbar'
 import Footer from './components/Footer'
 import ScrollToTop from './components/ScrollToTop'
+import CookieBanner from './components/CookieBanner'
 import Home from './pages/Home'
 import AboutPage from './pages/AboutPage'
 import PracticePage from './pages/PracticePage'
@@ -32,6 +33,7 @@ export default function App() {
           <AnimatedRoutes />
         </main>
         <Footer />
+        <CookieBanner />
       </div>
     </BrowserRouter>
   )
