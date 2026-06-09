@@ -66,8 +66,7 @@ export default function AboutPage() {
         <div className="relative max-w-7xl mx-auto px-6 lg:px-12">
           <div
             className="anim-fade-in-up flex items-center gap-4 mb-6"
-            style={{ animationDelay: `${PAGE_DELAY}s` }}
-          >
+            style={{ animationDelay: `${PAGE_DELAY}s` }}>
             <div className="w-8 h-px bg-gold-500" />
             <span className="font-sans text-[11px] tracking-[0.3em] uppercase text-gold-400">
               O kancelarii
@@ -75,12 +74,9 @@ export default function AboutPage() {
           </div>
           <h1
             className="anim-fade-in-up font-serif font-light text-5xl lg:text-7xl text-white leading-[0.95] max-w-2xl"
-            style={{ animationDelay: `${PAGE_DELAY + 0.1}s` }}
-          >
+            style={{ animationDelay: `${PAGE_DELAY + 0.1}s` }}>
             Doświadczenie{" "}
-            <em className="text-gradient not-italic block">
-              i zaangażowanie.
-            </em>
+            <em className="text-gradient not-italic block">i zaangażowanie.</em>
           </h1>
         </div>
       </section>
@@ -92,8 +88,7 @@ export default function AboutPage() {
             <div>
               <p
                 className="anim-fade-in-up font-sans font-light text-white/55 text-[15px] leading-relaxed mb-5"
-                style={{ animationDelay: `${PAGE_DELAY}s` }}
-              >
+                style={{ animationDelay: `${PAGE_DELAY}s` }}>
                 Kancelaria świadczy usługi prawne na najwyższym poziomie, łącząc
                 dogłębną znajomość prawa z praktycznym doświadczeniem zdobytym w
                 toku wieloletniej pracy zawodowej. Reprezentujemy Klientów
@@ -102,8 +97,7 @@ export default function AboutPage() {
               </p>
               <p
                 className="anim-fade-in-up font-sans font-light text-white/55 text-[15px] leading-relaxed"
-                style={{ animationDelay: `${PAGE_DELAY + 0.1}s` }}
-              >
+                style={{ animationDelay: `${PAGE_DELAY + 0.1}s` }}>
                 Stawiamy na długofalowe relacje oparte na zaufaniu i
                 przejrzystości. Każdy Klient otrzymuje jasną informację o stanie
                 sprawy, realnych możliwościach i potencjalnych ryzykach.
@@ -115,10 +109,13 @@ export default function AboutPage() {
                 <div
                   key={v.title}
                   className="anim-fade-in-up glass p-6 hover:border-gold-500/25 transition-colors duration-300"
-                  style={{ animationDelay: `${PAGE_DELAY + i * 0.1}s` }}
-                >
-                  <h3 className="font-serif text-lg text-gold-400 mb-2">{v.title}</h3>
-                  <p className="font-sans text-[13px] text-white/50 leading-relaxed">{v.desc}</p>
+                  style={{ animationDelay: `${PAGE_DELAY + i * 0.1}s` }}>
+                  <h3 className="font-serif text-lg text-gold-400 mb-2">
+                    {v.title}
+                  </h3>
+                  <p className="font-sans text-[13px] text-white/50 leading-relaxed">
+                    {v.desc}
+                  </p>
                 </div>
               ))}
             </div>
