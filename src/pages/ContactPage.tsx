@@ -9,9 +9,11 @@ const info = [
   { icon: Clock, label: 'Godziny przyjęć', value: 'Pn–Pt: 9:00–17:00\nSoboty: po uzgodnieniu', href: '#' },
 ]
 
+const PAGE_DELAY = 0.5
+
 const fadeUp = (delay = 0) => ({
   initial: { opacity: 0, y: 20 },
-  animate: { opacity: 1, y: 0, transition: { duration: 0.7, delay, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] } },
+  animate: { opacity: 1, y: 0, transition: { duration: 0.7, delay: PAGE_DELAY + delay, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] } },
 })
 
 export default function ContactPage() {
@@ -58,9 +60,8 @@ export default function ContactPage() {
                     key={item.label}
                     href={item.href}
                     initial={{ opacity: 0, y: 16 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.6, delay: i * 0.08 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.6, delay: PAGE_DELAY + i * 0.08 }}
                     className="glass p-5 group hover:border-gold-500/25 transition-all duration-300 block"
                   >
                     <item.icon size={15} className="text-gold-500 mb-3" />
@@ -75,9 +76,8 @@ export default function ContactPage() {
               {/* Map placeholder */}
               <motion.div
                 initial={{ opacity: 0 }}
-                whileInView={{ opacity: 1 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.7, delay: 0.3 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 0.7, delay: PAGE_DELAY + 0.3 }}
                 className="glass h-48 flex items-center justify-center"
               >
                 <p className="font-sans text-[12px] text-white/20 tracking-widest uppercase">Mapa — Google Maps embed</p>
