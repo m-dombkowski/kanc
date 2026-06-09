@@ -78,13 +78,13 @@ export default function Navbar() {
       <button
         onClick={() => setOpen((v) => !v)}
         aria-label={open ? 'Zamknij menu' : 'Otwórz menu'}
-        className="md:hidden fixed top-5 right-6 z-[60] w-11 h-11 flex flex-col items-center justify-center gap-[5px] group"
+        className="md:hidden fixed top-5 right-5 z-[60] w-11 h-11 flex flex-col items-center justify-center gap-[6px] overflow-visible group"
       >
         <span
           className="block h-px bg-gold-400 transition-all duration-300 origin-center"
           style={{
             width: '22px',
-            transform: open ? 'translateY(3px) rotate(45deg)' : 'none',
+            transform: open ? 'translateY(7px) rotate(45deg)' : 'none',
           }}
         />
         <span
@@ -92,13 +92,14 @@ export default function Navbar() {
           style={{
             width: '22px',
             opacity: open ? 0 : 1,
+            transform: open ? 'scaleX(0)' : 'none',
           }}
         />
         <span
           className="block h-px bg-gold-400 transition-all duration-300 origin-center"
           style={{
             width: '22px',
-            transform: open ? 'translateY(-3px) rotate(-45deg)' : 'none',
+            transform: open ? 'translateY(-7px) rotate(-45deg)' : 'none',
           }}
         />
       </button>
