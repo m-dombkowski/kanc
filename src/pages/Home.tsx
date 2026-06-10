@@ -11,6 +11,8 @@ const practiceShort = [
   'Prawo administracyjne',
   'Zamówienia publiczne',
   'Prawo medyczne',
+  'Prawo budowlane',
+  'Prawo własności intelektualnej',
 ]
 
 export default function Home() {
@@ -92,7 +94,7 @@ export default function Home() {
             >
               <div className="w-12 h-px bg-gold-500" />
               <span className="font-sans text-[11px] tracking-[0.3em] uppercase text-gold-400">
-                Kancelaria Radcy Prawnego
+                Kancelaria Radcy Prawnego Jacka Dombkowskiego
               </span>
             </motion.div>
 
@@ -113,9 +115,9 @@ export default function Home() {
               transition={{ duration: 0.7, delay: 0.55 }}
               className="font-sans font-light text-white/55 text-base lg:text-lg leading-relaxed max-w-xl mb-12"
             >
-              Zapewniamy kompleksową, rzetelną obsługę prawną osobom fizycznym
-              i przedsiębiorcom. Doświadczenie, dyskrecja i zaangażowanie —
-              na każdym etapie sprawy.
+              Zapewniamy kompleksową, rzetelną i merytoryczną obsługę prawną
+              osobom fizycznym i przedsiębiorcom. Wieloletnie doświadczenie,
+              najwyższy poziom staranności oraz dyskrecja na każdym etapie sprawy.
             </motion.p>
 
             <motion.div
@@ -176,7 +178,7 @@ export default function Home() {
                 className="font-serif font-light text-3xl lg:text-4xl text-white leading-[1.15] mb-6"
               >
                 Radca prawny z wieloletnim doświadczeniem w obsłudze{' '}
-                <em className="text-gradient not-italic">firm i osób prywatnych.</em>
+                <em className="text-gradient not-italic">przedsiębiorców i osób prywatnych.</em>
               </motion.h2>
               <motion.p
                 initial={{ opacity: 0, y: 16 }}

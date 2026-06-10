@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { motion } from 'framer-motion'
-import { Scale, Building2, Users, ShieldCheck, FileSearch, Stethoscope } from 'lucide-react'
+import { Scale, Building2, Users, ShieldCheck, FileSearch, Stethoscope, HardHat, Lightbulb } from 'lucide-react'
 import { NavLink } from 'react-router-dom'
 import PageTransition from '../components/PageTransition'
 
@@ -12,11 +12,11 @@ const areas = [
     title: 'Prawo cywilne',
     intro: 'Kompleksowa obsługa w zakresie sporów sądowych, odszkodowań i prawa zobowiązań.',
     details: [
+      'Prawo rzeczowe w tym spory o stwierdzenie i naruszenie własności',
+      'Prawo spadkowe i zachowek',
+      'Ochrona dóbr osobistych',
       'Dochodzenie roszczeń odszkodowawczych',
       'Spory o zapłatę i egzekucja należności',
-      'Prawo spadkowe i zachowek',
-      'Postępowania o stwierdzenie nabycia własności',
-      'Ochrona dóbr osobistych',
     ],
   },
   {
@@ -28,7 +28,7 @@ const areas = [
       'Kompleksowa bieżąca obsługa przedsiębiorców',
       'Sporządzanie i weryfikacja umów handlowych',
       'Spory korporacyjne i między wspólnikami',
-      'Restrukturyzacje i likwidacje',
+      'Upadłość konsumencka i likwidacja',
     ],
   },
   {
@@ -63,20 +63,42 @@ const areas = [
       'Przygotowanie ofert i dokumentacji przetargowej',
       'Odwołania do Krajowej Izby Odwoławczej (KIO)',
       'Skargi na orzeczenia KIO do sądu',
-      'Doradztwo dla zamawiających publicznych',
+      'Doradztwo dla wykonawców i zamawiających publicznych',
       'Umowy w sprawie zamówienia publicznego',
     ],
   },
   {
     icon: Stethoscope,
     title: 'Prawo medyczne',
-    intro: 'Obsługa podmiotów medycznych oraz pacjentów w sprawach związanych z ochroną zdrowia.',
+    intro: 'Obsługa podmiotów z branży medycznej, farmaceutycznej i kosmetologicznej.',
     details: [
-      'Roszczenia z tytułu błędów medycznych',
-      'Obsługa prawna placówek medycznych i lekarzy',
-      'Prawa pacjenta i ich ochrona',
-      'Odpowiedzialność cywilna i karna lekarzy',
-      'Umowy z NFZ i podmiotami leczniczymi',
+      'Prawo wyrobów medycznych oraz produktów biobójczych',
+      'Prawo farmaceutyczne',
+      'Doradztwo w zakresie prowadzenia gabinetów kosmetologicznych',
+      'Prawo suplementów diety',
+      'Spory z podmiotami leczniczymi',
+    ],
+  },
+  {
+    icon: HardHat,
+    title: 'Prawo budowlane',
+    intro: 'Obsługa prawna procesu inwestycyjnego — od analizy umów po spory z organami.',
+    details: [
+      'Bieżąca obsługa prawna inwestorów',
+      'Analiza umów',
+      'Analiza dokumentacji',
+      'Polubowne środki rozwiązywania sporów inwestycyjnych',
+      'Kontakt i zastępstwo przed organami budowlanymi',
+    ],
+  },
+  {
+    icon: Lightbulb,
+    title: 'Prawo własności intelektualnej',
+    intro: 'Ochrona praw autorskich i własności intelektualnej w działalności gospodarczej.',
+    details: [
+      'Przygotowanie i analiza umów, w tym umów licencyjnych',
+      'Bieżące doradztwo i zastępstwo w sporach',
+      'Przygotowanie regulaminów i dokumentacji wewnętrznej',
     ],
   },
 ]
