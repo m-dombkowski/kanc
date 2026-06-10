@@ -1,6 +1,6 @@
 import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom'
 import { AnimatePresence } from 'framer-motion'
-import { LanguageProvider } from './contexts/LanguageContext'
+import { LanguageProvider, useLang } from './contexts/LanguageContext'
 import Navbar from './components/Navbar'
 import Footer from './components/Footer'
 import ScrollToTop from './components/ScrollToTop'
@@ -25,20 +25,32 @@ function AnimatedRoutes() {
   )
 }
 
-export default function App() {
+function AppInner() {
+  const { fading } = useLang()
   return (
-    <BrowserRouter>
-      <LanguageProvider>
-      <div className="min-h-screen flex flex-col">
-        <ScrollToTop />
-        <Navbar />
+    <div className="min-h-screen flex flex-col">
+      <ScrollToTop />
+      <Navbar />
+      <div
+        className="flex-1 flex flex-col transition-opacity duration-[180ms]"
+        style={{ opacity: fading ? 0 : 1 }}
+      >
         <main className="flex-1">
           <AnimatedRoutes />
         </main>
         <Footer />
-        <CookieBanner />
-        <NewsletterToast />
       </div>
+      <CookieBanner />
+      <NewsletterToast />
+    </div>
+  )
+}
+
+export default function App() {
+  return (
+    <BrowserRouter>
+      <LanguageProvider>
+        <AppInner />
       </LanguageProvider>
     </BrowserRouter>
   )
