@@ -1,5 +1,6 @@
 import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom'
 import { AnimatePresence } from 'framer-motion'
+import { LanguageProvider } from './contexts/LanguageContext'
 import Navbar from './components/Navbar'
 import Footer from './components/Footer'
 import ScrollToTop from './components/ScrollToTop'
@@ -27,6 +28,7 @@ function AnimatedRoutes() {
 export default function App() {
   return (
     <BrowserRouter>
+      <LanguageProvider>
       <div className="min-h-screen flex flex-col">
         <ScrollToTop />
         <Navbar />
@@ -37,6 +39,7 @@ export default function App() {
         <CookieBanner />
         <NewsletterToast />
       </div>
+      </LanguageProvider>
     </BrowserRouter>
   )
 }

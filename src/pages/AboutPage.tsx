@@ -2,57 +2,16 @@ import { motion } from "framer-motion";
 import { GraduationCap, Award, Briefcase } from "lucide-react";
 import { NavLink } from "react-router-dom";
 import PageTransition from "../components/PageTransition";
+import { useLang } from "../contexts/LanguageContext";
 
-const values = [
-  {
-    title: "Rzetelność",
-    desc: "Każdą sprawę traktujemy z pełnym zaangażowaniem — niezależnie od jej skali.",
-  },
-  {
-    title: "Dyskrecja",
-    desc: "Zachowanie tajemnicy zawodowej i poufności powierzonych informacji to absolutny priorytet.",
-  },
-  {
-    title: "Skuteczność",
-    desc: "Nasze działania są ukierunkowane na osiągnięcie najlepszego możliwego rezultatu dla Klienta.",
-  },
-  {
-    title: "Komunikacja",
-    desc: "Klient zawsze wie, na jakim etapie jest sprawa. Bez prawniczego żargonu, jasno i na czas.",
-  },
-];
+const credentialIcons = [GraduationCap, Briefcase, Award]
 
-const credentials = [
-  {
-    icon: GraduationCap,
-    text: "Absolwent Wydziału Prawa i Administracji Uniwersytetu Śląskiego",
-  },
-  {
-    icon: Briefcase,
-    text: "Studia podyplomowe „Prawo zamówień publicznych” na Uniwersytecie Jagiellońskim oraz „Doradztwo podatkowe” na Uniwersytecie Ekonomicznym w Krakowie",
-  },
-  {
-    icon: Award,
-    text: "Wpisany na listę radców prawnych Okręgowej Izby Radców Prawnych w Krakowie",
-  },
-];
-
-// small offset after the page transition starts so the header leads the reveal
 const PAGE_DELAY = 0.1;
 
-const stagger = {
-  animate: { transition: { staggerChildren: 0.1, delayChildren: PAGE_DELAY } },
-};
-const fadeUp = {
-  initial: { opacity: 0, y: 24 },
-  animate: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.65, ease: [0.22, 1, 0.36, 1] },
-  },
-};
-
 export default function AboutPage() {
+  const { T } = useLang()
+  const { values, credentials } = T.about
+
   return (
     <PageTransition>
       {/* PAGE HEADER */}
@@ -65,14 +24,14 @@ export default function AboutPage() {
             style={{ animationDelay: `${PAGE_DELAY}s` }}>
             <div className="w-8 h-px bg-gold-500" />
             <span className="font-sans text-[11px] tracking-[0.3em] uppercase text-gold-400">
-              O kancelarii
+              {T.about.badge}
             </span>
           </div>
           <h1
             className="anim-fade-in-up font-serif font-light text-5xl lg:text-7xl text-white leading-[0.95] max-w-2xl"
             style={{ animationDelay: `${PAGE_DELAY + 0.1}s` }}>
-            Doświadczenie{" "}
-            <em className="text-gradient not-italic block">i zaangażowanie.</em>
+            {T.about.h1a}{" "}
+            <em className="text-gradient not-italic block">{T.about.h1b}</em>
           </h1>
         </div>
       </section>
@@ -85,19 +44,12 @@ export default function AboutPage() {
               <p
                 className="anim-fade-in-up font-sans font-light text-white/55 text-[15px] leading-relaxed mb-5"
                 style={{ animationDelay: `${PAGE_DELAY}s` }}>
-                Kancelaria świadczy usługi prawne na najwyższym poziomie, łącząc
-                dogłębną znajomość prawa z praktycznym doświadczeniem zdobytym w
-                toku wieloletniej pracy zawodowej. Reprezentujemy Klientów
-                zarówno przed sądami powszechnymi, w postępowaniach
-                administracyjnych i sądowo administracyjnych jak również przed
-                Krajową Izbą Odwoławczą.
+                {T.about.desc1}
               </p>
               <p
                 className="anim-fade-in-up font-sans font-light text-white/55 text-[15px] leading-relaxed"
                 style={{ animationDelay: `${PAGE_DELAY + 0.1}s` }}>
-                Stawiamy na długofalowe relacje oparte na zaufaniu i
-                przejrzystości. Każdy Klient otrzymuje jasną informację o stanie
-                sprawy, realnych możliwościach i potencjalnych ryzykach.
+                {T.about.desc2}
               </p>
             </div>
 
@@ -132,7 +84,7 @@ export default function AboutPage() {
             className="flex items-center gap-4 mb-16">
             <div className="w-8 h-px bg-gold-500" />
             <span className="font-sans text-[11px] tracking-[0.3em] uppercase text-gold-400">
-              Zespół
+              {T.about.teamBadge}
             </span>
           </motion.div>
 
@@ -156,10 +108,10 @@ export default function AboutPage() {
                   <div className="absolute inset-0 bg-gradient-to-t from-navy-950/75 via-transparent to-transparent" />
                   <div className="absolute bottom-0 left-0 right-0 p-5">
                     <p className="font-serif text-xl text-white mb-0.5">
-                      Jacek Dombkowski
+                      {T.about.teamName}
                     </p>
                     <p className="font-sans text-[10px] tracking-[0.2em] text-gold-400 uppercase">
-                      Radca Prawny
+                      {T.about.teamRole}
                     </p>
                   </div>
                 </div>
@@ -174,7 +126,7 @@ export default function AboutPage() {
                 viewport={{ once: true }}
                 transition={{ duration: 0.8, delay: 0.1 }}
                 className="font-serif font-light text-4xl lg:text-5xl text-white leading-[1.1] mb-5">
-                Jacek Dombkowski
+                {T.about.teamName}
               </motion.h2>
               <motion.div
                 initial={{ scaleX: 0 }}
@@ -185,69 +137,38 @@ export default function AboutPage() {
                 className="w-16 h-px bg-gold-500 mb-8"
               />
 
-              <motion.p
-                initial={{ opacity: 0, y: 16 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.7, delay: 0.2 }}
-                className="font-sans font-light text-white/55 text-[15px] leading-relaxed mb-5">
-                Radca prawny z wieloletnim stażem zawodowym. Specjalizuje się w
-                kompleksowej obsłudze prawnej przedsiębiorców, podmiotów
-                prywatnych i publicznych, oraz klientów indywidualnych. W swojej
-                praktyce koncentruje się przede wszystkim na prawie cywilnym,
-                gospodarczym, administracyjnym, prawie pracy, prawie zamówień
-                publicznych oraz prawie medycznym.
-              </motion.p>
-              <motion.p
-                initial={{ opacity: 0, y: 16 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.7, delay: 0.26 }}
-                className="font-sans font-light text-white/55 text-[15px] leading-relaxed mb-5">
-                Posiada wieloletnie doświadczenie w kompleksowej obsłudze
-                prawnej spółek, w tym notowanych na Giełdzie Papierów
-                Wartościowych.
-              </motion.p>
-              <motion.p
-                initial={{ opacity: 0, y: 16 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.7, delay: 0.32 }}
-                className="font-sans font-light text-white/55 text-[15px] leading-relaxed mb-5">
-                Świadczy pomoc prawną zarówno na etapie bieżącego doradztwa, jak
-                i w postępowaniach sądowych, administracyjnych. Reprezentuje
-                klientów przed sądami powszechnymi, organami administracji
-                publicznej, Krajową Izbą Odwoławczą oraz innymi instytucjami
-                właściwymi dla rozpatrzenia sprawy.
-              </motion.p>
-              <motion.p
-                initial={{ opacity: 0, y: 16 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.7, delay: 0.38 }}
-                className="font-sans font-light text-white/55 text-[15px] leading-relaxed mb-10">
-                W swojej praktyce stawia na praktyczne podejście do problemów
-                prawnych oraz poszukiwanie rozwiązań odpowiadających celom
-                biznesowym klienta.
-              </motion.p>
+              {[T.about.bio1, T.about.bio2, T.about.bio3, T.about.bio4].map((bio, i) => (
+                <motion.p
+                  key={i}
+                  initial={{ opacity: 0, y: 16 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.7, delay: 0.2 + i * 0.06 }}
+                  className={`font-sans font-light text-white/55 text-[15px] leading-relaxed ${i < 3 ? 'mb-5' : 'mb-10'}`}>
+                  {bio}
+                </motion.p>
+              ))}
 
               <div className="flex flex-col gap-4">
-                {credentials.map((c, i) => (
-                  <motion.div
-                    key={i}
-                    initial={{ opacity: 0, x: 20 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.6, delay: 0.32 + i * 0.09 }}
-                    className="flex items-center gap-4">
-                    <div className="flex-shrink-0 w-8 h-8 rounded-full border border-gold-500/30 flex items-center justify-center">
-                      <c.icon size={13} className="text-gold-500" />
-                    </div>
-                    <p className="font-sans text-[13px] text-white/50 leading-relaxed">
-                      {c.text}
-                    </p>
-                  </motion.div>
-                ))}
+                {credentials.map((text, i) => {
+                  const Icon = credentialIcons[i]
+                  return (
+                    <motion.div
+                      key={i}
+                      initial={{ opacity: 0, x: 20 }}
+                      whileInView={{ opacity: 1, x: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 0.6, delay: 0.32 + i * 0.09 }}
+                      className="flex items-center gap-4">
+                      <div className="flex-shrink-0 w-8 h-8 rounded-full border border-gold-500/30 flex items-center justify-center">
+                        <Icon size={13} className="text-gold-500" />
+                      </div>
+                      <p className="font-sans text-[13px] text-white/50 leading-relaxed">
+                        {text}
+                      </p>
+                    </motion.div>
+                  )
+                })}
               </div>
 
               <motion.div
@@ -259,7 +180,7 @@ export default function AboutPage() {
                 <NavLink
                   to="/kontakt"
                   className="inline-flex items-center gap-3 px-8 py-4 bg-gold-500 text-navy-950 font-sans font-medium text-xs tracking-[0.2em] uppercase hover:bg-gold-400 transition-colors duration-300">
-                  Skontaktuj się
+                  {T.about.contactCta}
                 </NavLink>
               </motion.div>
             </div>

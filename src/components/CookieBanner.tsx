@@ -1,9 +1,11 @@
 import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { NavLink } from 'react-router-dom'
+import { useLang } from '../contexts/LanguageContext'
 
 export default function CookieBanner() {
   const [visible, setVisible] = useState(false)
+  const { T } = useLang()
 
   useEffect(() => {
     if (!localStorage.getItem('cookies-accepted')) {
@@ -33,10 +35,9 @@ export default function CookieBanner() {
         >
           <div className="max-w-7xl mx-auto px-6 lg:px-12 py-5 flex flex-col sm:flex-row items-start sm:items-center gap-5 justify-between">
             <p className="font-sans text-[12px] text-white/50 leading-relaxed max-w-2xl">
-              Strona wykorzystuje pliki cookies w celu zapewnienia prawidłowego działania serwisu.
-              Korzystając ze strony, wyrażasz zgodę na ich stosowanie zgodnie z{' '}
+              {T.cookie.text}{' '}
               <NavLink to="/polityka-prywatnosci" className="text-gold-500/80 hover:text-gold-400 underline underline-offset-2 transition-colors">
-                polityką prywatności
+                {T.cookie.privacyLink}
               </NavLink>
               .
             </p>
@@ -45,13 +46,13 @@ export default function CookieBanner() {
                 onClick={decline}
                 className="font-sans text-[11px] tracking-[0.15em] uppercase text-white/35 hover:text-white/60 transition-colors px-4 py-2"
               >
-                Odrzuć
+                {T.cookie.decline}
               </button>
               <button
                 onClick={accept}
                 className="font-sans text-[11px] tracking-[0.15em] uppercase text-navy-950 bg-gold-500 hover:bg-gold-400 transition-colors px-6 py-2"
               >
-                Akceptuję
+                {T.cookie.accept}
               </button>
             </div>
           </div>
