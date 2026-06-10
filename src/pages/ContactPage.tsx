@@ -10,8 +10,8 @@ const info = [
   { icon: Clock, label: 'Godziny przyjęć', value: 'Pn–Pt: 9:00–17:00\nSoboty: po uzgodnieniu', href: '#' },
 ]
 
-// delay > PageTransition duration (0.45s) to avoid flash on elements in initial viewport
-const PAGE_DELAY = 0.5
+// small offset after the page transition starts so the header leads the reveal
+const PAGE_DELAY = 0.1
 
 const stagger = {
   animate: { transition: { staggerChildren: 0.1, delayChildren: PAGE_DELAY } },
