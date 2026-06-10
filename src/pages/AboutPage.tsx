@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { GraduationCap, Award, Briefcase, Scale } from "lucide-react";
+import { GraduationCap, Award, Briefcase } from "lucide-react";
 import { NavLink } from "react-router-dom";
 import PageTransition from "../components/PageTransition";
 
@@ -28,16 +28,12 @@ const credentials = [
     text: "Absolwent Wydziału Prawa i Administracji Uniwersytetu Śląskiego",
   },
   {
-    icon: Award,
-    text: "Wpis na listę radców prawnych Okręgowej Izby Radców Prawnych w Krakowie",
-  },
-  {
     icon: Briefcase,
-    text: "Wieloletnie doświadczenie w obsłudze prawnej przedsiębiorców i osób prywatnych",
+    text: "Studia podyplomowe „Prawo zamówień publicznych” na Uniwersytecie Jagiellońskim oraz „Doradztwo podatkowe” na Uniwersytecie Ekonomicznym w Krakowie",
   },
   {
-    icon: Scale,
-    text: "Specjalizacja w prawie cywilnym, gospodarczym, administracyjnym i medycznym",
+    icon: Award,
+    text: "Wpisany na listę radców prawnych Okręgowej Izby Radców Prawnych w Krakowie",
   },
 ];
 
@@ -92,8 +88,9 @@ export default function AboutPage() {
                 Kancelaria świadczy usługi prawne na najwyższym poziomie, łącząc
                 dogłębną znajomość prawa z praktycznym doświadczeniem zdobytym w
                 toku wieloletniej pracy zawodowej. Reprezentujemy Klientów
-                zarówno przed sądami powszechnymi, jak i w postępowaniach
-                administracyjnych i arbitrażowych.
+                zarówno przed sądami powszechnymi, w postępowaniach
+                administracyjnych i sądowo administracyjnych jak również przed
+                Krajową Izbą Odwoławczą.
               </p>
               <p
                 className="anim-fade-in-up font-sans font-light text-white/55 text-[15px] leading-relaxed"
@@ -152,7 +149,7 @@ export default function AboutPage() {
                 <div className="relative bg-navy-800 overflow-hidden flex-1 min-h-[320px]">
                   <img
                     src="/Jacek.jpeg"
-                    alt="r.pr. Jacek Dombkowski"
+                    alt="Jacek Dombkowski"
                     className="w-full h-full object-cover object-top"
                     style={{ filter: "contrast(1.05) brightness(0.97)" }}
                   />
@@ -177,7 +174,7 @@ export default function AboutPage() {
                 viewport={{ once: true }}
                 transition={{ duration: 0.8, delay: 0.1 }}
                 className="font-serif font-light text-4xl lg:text-5xl text-white leading-[1.1] mb-5">
-                r.pr. Jacek Dombkowski
+                Jacek Dombkowski
               </motion.h2>
               <motion.div
                 initial={{ scaleX: 0 }}
@@ -195,20 +192,43 @@ export default function AboutPage() {
                 transition={{ duration: 0.7, delay: 0.2 }}
                 className="font-sans font-light text-white/55 text-[15px] leading-relaxed mb-5">
                 Radca prawny z wieloletnim stażem zawodowym. Specjalizuje się w
-                prawie cywilnym, gospodarczym, administracyjnym, prawie zamówień
-                publicznych oraz prawie medycznym, świadcząc usługi zarówno dla
-                przedsiębiorców, jak i osób fizycznych.
+                kompleksowej obsłudze prawnej przedsiębiorców, podmiotów
+                prywatnych i publicznych, oraz klientów indywidualnych. W swojej
+                praktyce koncentruje się przede wszystkim na prawie cywilnym,
+                gospodarczym, administracyjnym, prawie pracy, prawie zamówień
+                publicznych oraz prawie medycznym.
               </motion.p>
               <motion.p
                 initial={{ opacity: 0, y: 16 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.7, delay: 0.28 }}
+                transition={{ duration: 0.7, delay: 0.26 }}
+                className="font-sans font-light text-white/55 text-[15px] leading-relaxed mb-5">
+                Posiada wieloletnie doświadczenie w kompleksowej obsłudze
+                prawnej spółek, w tym notowanych na Giełdzie Papierów
+                Wartościowych.
+              </motion.p>
+              <motion.p
+                initial={{ opacity: 0, y: 16 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.7, delay: 0.32 }}
+                className="font-sans font-light text-white/55 text-[15px] leading-relaxed mb-5">
+                Świadczy pomoc prawną zarówno na etapie bieżącego doradztwa, jak
+                i w postępowaniach sądowych, administracyjnych. Reprezentuje
+                klientów przed sądami powszechnymi, organami administracji
+                publicznej, Krajową Izbą Odwoławczą oraz innymi instytucjami
+                właściwymi dla rozpatrzenia sprawy.
+              </motion.p>
+              <motion.p
+                initial={{ opacity: 0, y: 16 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.7, delay: 0.38 }}
                 className="font-sans font-light text-white/55 text-[15px] leading-relaxed mb-10">
-                Reprezentuje Klientów w postępowaniach sądowych, prowadzi
-                negocjacje, sporządza umowy oraz opinie prawne. Szczególną wagę
-                przywiązuje do indywidualnego traktowania każdej sprawy i
-                regularnego kontaktu z Klientem na każdym etapie postępowania.
+                W swojej praktyce stawia na praktyczne podejście do problemów
+                prawnych oraz poszukiwanie rozwiązań odpowiadających celom
+                biznesowym klienta.
               </motion.p>
 
               <div className="flex flex-col gap-4">

@@ -10,7 +10,7 @@ export default function Footer() {
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-10 mb-14">
           <div className="lg:col-span-1">
             <p className="font-serif text-lg text-gold-400 tracking-widest2 mb-1">KANCELARIA</p>
-            <p className="font-sans text-[10px] tracking-[0.3em] text-white/30 uppercase mb-5">Radcy Prawnego</p>
+            <p className="font-sans text-[10px] tracking-[0.3em] text-white/30 uppercase mb-5">Radcy Prawnego Jacka Dombkowskiego</p>
             <p className="font-sans text-[12px] text-white/35 leading-relaxed">
               Profesjonalna pomoc prawna dla osób fizycznych i przedsiębiorców.
             </p>
@@ -28,7 +28,7 @@ export default function Footer() {
           <div>
             <p className="font-sans text-[10px] tracking-[0.25em] uppercase text-gold-400/70 mb-5">Praktyka</p>
             <ul className="space-y-3">
-              {['Prawo cywilne', 'Prawo gospodarcze', 'Prawo pracy', 'Prawo administracyjne', 'Zamówienia publiczne', 'Prawo medyczne'].map((l) => (
+              {['Prawo cywilne', 'Prawo gospodarcze', 'Prawo pracy', 'Prawo administracyjne', 'Zamówienia publiczne', 'Prawo medyczne', 'Prawo budowlane', 'Prawo własności intelektualnej'].map((l) => (
                 <li key={l}>
                   <NavLink to="/praktyka" className="font-sans text-[12px] text-white/35 hover:text-gold-400 transition-colors">
                     {l}
@@ -59,7 +59,6 @@ export default function Footer() {
             <ul className="space-y-3">
               {[
                 { label: 'Polityka prywatności', to: '/polityka-prywatnosci' },
-                { label: 'Regulamin', to: '/regulamin' },
                 { label: 'Cookies', to: '/cookies' },
                 { label: 'RODO', to: '/rodo' },
               ].map((l) => (
@@ -78,7 +77,7 @@ export default function Footer() {
             © {year} Kancelaria Radcy Prawnego Jacek Dombkowski. Wszelkie prawa zastrzeżone.
           </p>
           <p className="font-sans text-[11px] text-white/15">
-            Wpis na listę radców prawnych OIRP w Warszawie
+            Wpis na listę radców prawnych OIRP w Krakowie
           </p>
         </div>
       </div>

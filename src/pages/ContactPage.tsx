@@ -1,11 +1,12 @@
+import { useState } from 'react'
 import { motion } from 'framer-motion'
 import { Phone, Mail, MapPin, Clock } from 'lucide-react'
 import PageTransition from '../components/PageTransition'
 
 const info = [
-  { icon: Phone, label: 'Telefon', value: '+48 000 000 000', href: 'tel:+48000000000' },
-  { icon: Mail, label: 'E-mail', value: 'kancelaria@example.pl', href: 'mailto:kancelaria@example.pl' },
-  { icon: MapPin, label: 'Adres', value: 'ul. Przykładowa 1/10\n00-000 Warszawa', href: '#' },
+  { icon: Phone, label: 'Telefon', value: '+48 796 839 168', href: 'tel:+48796839168' },
+  { icon: Mail, label: 'E-mail', value: 'kontakt@dombkowskikancelaria.pl', href: 'mailto:kontakt@dombkowskikancelaria.pl' },
+  { icon: MapPin, label: 'Adres', value: 'ul. Kalwaryjska 69/9\n30-504 Kraków', href: '#' },
   { icon: Clock, label: 'Godziny przyjęć', value: 'Pn–Pt: 9:00–17:00\nSoboty: po uzgodnieniu', href: '#' },
 ]
 
@@ -25,6 +26,24 @@ const fadeUp = {
 }
 
 export default function ContactPage() {
+  const [status, setStatus] = useState<'idle' | 'sending' | 'sent' | 'error'>('idle')
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault()
+    setStatus('sending')
+    const data = new FormData(e.currentTarget)
+    try {
+      const res = await fetch('/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: new URLSearchParams(data as unknown as Record<string, string>).toString(),
+      })
+      setStatus(res.ok ? 'sent' : 'error')
+    } catch {
+      setStatus('error')
+    }
+  }
+
   return (
     <PageTransition>
       {/* PAGE HEADER */}
@@ -78,12 +97,20 @@ export default function ContactPage() {
                 ))}
               </div>
 
-              {/* Map placeholder */}
+              {/* Map */}
               <div
-                className="anim-fade-in-up glass h-48 flex items-center justify-center"
+                className="anim-fade-in-up glass overflow-hidden"
                 style={{ animationDelay: `${PAGE_DELAY + 0.35}s` }}
               >
-                <p className="font-sans text-[12px] text-white/20 tracking-widest uppercase">Mapa — Google Maps embed</p>
+                <iframe
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2562.5505525339836!2d19.93905841262307!3d50.0385170713977!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47165b5e89642fd3%3A0x2eca705377c971d0!2sKalwaryjska%2069%2F9%2C%2030-504%20Krak%C3%B3w!5e0!3m2!1spl!2spl!4v1781085851391!5m2!1spl!2spl"
+                  title="Mapa — ul. Kalwaryjska 69/9, Kraków"
+                  className="w-full h-72 block"
+                  style={{ border: 0 }}
+                  allowFullScreen
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                />
               </div>
             </div>
 
@@ -95,12 +122,20 @@ export default function ContactPage() {
               transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
             >
               <h2 className="font-serif font-light text-2xl text-white mb-8">Formularz kontaktowy</h2>
-              <form className="flex flex-col gap-5" onSubmit={(e) => e.preventDefault()}>
+              <form
+                name="kontakt"
+                method="POST"
+                data-netlify="true"
+                className="flex flex-col gap-5"
+                onSubmit={handleSubmit}
+              >
+                <input type="hidden" name="form-name" value="kontakt" />
                 <div className="grid sm:grid-cols-2 gap-4">
                   <div className="flex flex-col gap-2">
                     <label className="font-sans text-[10px] tracking-[0.2em] uppercase text-white/40">Imię i nazwisko *</label>
                     <input
                       type="text"
+                      name="imie-nazwisko"
                       required
                       className="bg-white/5 border border-white/10 px-4 py-3 text-[13px] text-white placeholder-white/20 font-sans focus:outline-none focus:border-gold-500/50 transition-colors"
                       placeholder="Jan Kowalski"
@@ -110,6 +145,7 @@ export default function ContactPage() {
                     <label className="font-sans text-[10px] tracking-[0.2em] uppercase text-white/40">Telefon</label>
                     <input
                       type="tel"
+                      name="telefon"
                       className="bg-white/5 border border-white/10 px-4 py-3 text-[13px] text-white placeholder-white/20 font-sans focus:outline-none focus:border-gold-500/50 transition-colors"
                       placeholder="+48 000 000 000"
                     />
@@ -120,6 +156,7 @@ export default function ContactPage() {
                   <label className="font-sans text-[10px] tracking-[0.2em] uppercase text-white/40">Adres e-mail *</label>
                   <input
                     type="email"
+                    name="email"
                     required
                     className="bg-white/5 border border-white/10 px-4 py-3 text-[13px] text-white placeholder-white/20 font-sans focus:outline-none focus:border-gold-500/50 transition-colors"
                     placeholder="jan@example.pl"
@@ -128,7 +165,7 @@ export default function ContactPage() {
 
                 <div className="flex flex-col gap-2">
                   <label className="font-sans text-[10px] tracking-[0.2em] uppercase text-white/40">Obszar prawa</label>
-                  <select className="bg-navy-900 border border-white/10 px-4 py-3 text-[13px] text-white/60 font-sans focus:outline-none focus:border-gold-500/50 transition-colors appearance-none">
+                  <select name="obszar-prawa" className="bg-navy-900 border border-white/10 px-4 py-3 text-[13px] text-white/60 font-sans focus:outline-none focus:border-gold-500/50 transition-colors appearance-none">
                     <option value="">Wybierz dziedzinę…</option>
                     <option>Prawo cywilne</option>
                     <option>Prawo gospodarcze</option>
@@ -136,6 +173,8 @@ export default function ContactPage() {
                     <option>Prawo administracyjne</option>
                     <option>Zamówienia publiczne</option>
                     <option>Prawo medyczne</option>
+                    <option>Prawo budowlane</option>
+                    <option>Prawo własności intelektualnej</option>
                     <option>Inne</option>
                   </select>
                 </div>
@@ -144,6 +183,7 @@ export default function ContactPage() {
                   <label className="font-sans text-[10px] tracking-[0.2em] uppercase text-white/40">Opis sprawy *</label>
                   <textarea
                     rows={5}
+                    name="opis-sprawy"
                     required
                     className="bg-white/5 border border-white/10 px-4 py-3 text-[13px] text-white placeholder-white/20 font-sans focus:outline-none focus:border-gold-500/50 transition-colors resize-none"
                     placeholder="Krótki opis sytuacji prawnej…"
@@ -160,10 +200,21 @@ export default function ContactPage() {
 
                 <button
                   type="submit"
-                  className="mt-1 px-8 py-4 bg-gold-500 text-navy-950 font-sans font-medium text-xs tracking-[0.2em] uppercase hover:bg-gold-400 transition-colors duration-300"
+                  disabled={status === 'sending' || status === 'sent'}
+                  className="mt-1 px-8 py-4 bg-gold-500 text-navy-950 font-sans font-medium text-xs tracking-[0.2em] uppercase hover:bg-gold-400 transition-colors duration-300 disabled:opacity-60 disabled:cursor-not-allowed"
                 >
-                  Wyślij zapytanie
+                  {status === 'sending' ? 'Wysyłanie…' : status === 'sent' ? 'Wysłano' : 'Wyślij zapytanie'}
                 </button>
+                {status === 'sent' && (
+                  <p className="font-sans text-[12px] text-gold-400">
+                    Dziękujemy za wiadomość. Odpowiemy najszybciej, jak to możliwe.
+                  </p>
+                )}
+                {status === 'error' && (
+                  <p className="font-sans text-[12px] text-red-400/80">
+                    Wystąpił błąd podczas wysyłania. Prosimy o kontakt mailowy: kontakt@dombkowskikancelaria.pl
+                  </p>
+                )}
               </form>
             </motion.div>
           </div>
