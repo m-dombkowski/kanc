@@ -91,7 +91,7 @@ export default function Footer() {
               <span className="font-sans text-[11px] tracking-wide">LinkedIn</span>
             </a>
 
-            <div className="mt-8">
+            <div id="newsletter" className="mt-8">
               <p className="font-sans text-[10px] tracking-[0.25em] uppercase text-gold-400/70 mb-3">Newsletter</p>
               <NewsletterForm />
             </div>
