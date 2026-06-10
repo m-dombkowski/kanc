@@ -23,6 +23,9 @@
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
+    /* extend the background box so descenders aren't clipped at tight line-heights */
+    padding-bottom: 0.15em;
+    margin-bottom: -0.15em;
   }
 
   .gold-line {
