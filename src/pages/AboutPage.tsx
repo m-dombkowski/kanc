@@ -239,8 +239,8 @@ export default function AboutPage() {
                     whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.6, delay: 0.32 + i * 0.09 }}
-                    className="flex items-start gap-4">
-                    <div className="mt-0.5 flex-shrink-0 w-8 h-8 rounded-full border border-gold-500/30 flex items-center justify-center">
+                    className="flex items-center gap-4">
+                    <div className="flex-shrink-0 w-8 h-8 rounded-full border border-gold-500/30 flex items-center justify-center">
                       <c.icon size={13} className="text-gold-500" />
                     </div>
                     <p className="font-sans text-[13px] text-white/50 leading-relaxed">
