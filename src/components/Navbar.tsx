@@ -1,17 +1,19 @@
 import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { NavLink, useLocation } from 'react-router-dom'
-
-const links = [
-  { label: 'O kancelarii', to: '/o-kancelarii' },
-  { label: 'Zakres praktyki', to: '/praktyka' },
-  { label: 'Kontakt', to: '/kontakt' },
-]
+import { useLang } from '../contexts/LanguageContext'
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false)
   const [open, setOpen] = useState(false)
   const location = useLocation()
+  const { lang, toggle, T } = useLang()
+
+  const links = [
+    { label: T.nav.about, to: '/o-kancelarii' },
+    { label: T.nav.practice, to: '/praktyka' },
+    { label: T.nav.contact, to: '/kontakt' },
+  ]
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 60)
@@ -42,7 +44,7 @@ export default function Navbar() {
         <div className="max-w-7xl mx-auto px-6 lg:px-12 flex items-center justify-between h-20">
           <NavLink to="/" className="flex flex-col leading-none" onClick={() => setOpen(false)}>
             <span className="font-serif text-xl text-gold-400 font-light tracking-widest2">KANCELARIA</span>
-            <span className="font-sans text-[8px] tracking-[0.18em] sm:text-[10px] sm:tracking-[0.3em] text-white/50 uppercase mt-0.5">Radcy Prawnego Jacka Dombkowskiego</span>
+            <span className="font-sans text-[8px] tracking-[0.18em] sm:text-[10px] sm:tracking-[0.3em] text-white/50 uppercase mt-0.5">{T.nav.subtitle}</span>
           </NavLink>
 
           {/* Desktop nav */}
@@ -68,8 +70,19 @@ export default function Navbar() {
                 }`
               }
             >
-              Kontakt
+              {T.nav.contact}
             </NavLink>
+
+            {/* Language toggle — desktop */}
+            <button
+              onClick={toggle}
+              aria-label={lang === 'pl' ? 'Switch to English' : 'Przełącz na polski'}
+              className="ml-2 font-sans text-[11px] tracking-[0.15em] uppercase flex items-center gap-1 transition-colors duration-300"
+            >
+              <span className={lang === 'pl' ? 'text-gold-400' : 'text-white/35 hover:text-white/60'}>PL</span>
+              <span className="text-white/20">/</span>
+              <span className={lang === 'en' ? 'text-gold-400' : 'text-white/35 hover:text-white/60'}>EN</span>
+            </button>
           </nav>
         </div>
       </motion.header>
@@ -125,7 +138,7 @@ export default function Navbar() {
               className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-gold-500/60 to-transparent"
             />
 
-            {/* Nav links — centered */}
+            {/* Nav links */}
             <div className="flex-1 flex flex-col items-start justify-center px-10 gap-2">
               {links.map((l, i) => (
                 <motion.div
@@ -147,6 +160,25 @@ export default function Navbar() {
                   </NavLink>
                 </motion.div>
               ))}
+
+              {/* Language toggle — mobile */}
+              <motion.div
+                initial={{ opacity: 0, x: -24 }}
+                animate={{ opacity: 1, x: 0 }}
+                exit={{ opacity: 0, x: -16 }}
+                transition={{ duration: 0.4, delay: 0.1 + links.length * 0.07, ease: [0.22, 1, 0.36, 1] }}
+                className="mt-6"
+              >
+                <button
+                  onClick={toggle}
+                  aria-label={lang === 'pl' ? 'Switch to English' : 'Przełącz na polski'}
+                  className="font-sans text-[13px] tracking-[0.2em] uppercase flex items-center gap-2"
+                >
+                  <span className={lang === 'pl' ? 'text-gold-400' : 'text-white/35'}>PL</span>
+                  <span className="text-white/20">/</span>
+                  <span className={lang === 'en' ? 'text-gold-400' : 'text-white/35'}>EN</span>
+                </button>
+              </motion.div>
             </div>
 
             {/* Bottom bar */}
@@ -158,7 +190,7 @@ export default function Navbar() {
               className="px-10 py-10 border-t border-white/5"
             >
               <p className="font-sans text-[11px] tracking-[0.2em] text-white/25 uppercase">
-                Kancelaria Radcy Prawnego · Jacek Dombkowski
+                {T.nav.bottomBar}
               </p>
             </motion.div>
           </motion.div>

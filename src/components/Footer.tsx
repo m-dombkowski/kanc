@@ -1,11 +1,14 @@
 import { useState } from 'react'
 import { NavLink } from 'react-router-dom'
 import { Linkedin, ArrowRight } from 'lucide-react'
+import { useLang } from '../contexts/LanguageContext'
 
 function NewsletterForm() {
   const [email, setEmail] = useState('')
   const [status, setStatus] = useState<'idle' | 'sending' | 'sent' | 'error'>('idle')
   const [error, setError] = useState('')
+  const { T } = useLang()
+  const F = T.footer
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
@@ -20,11 +23,11 @@ function NewsletterForm() {
         setStatus('sent')
       } else {
         const data = await res.json().catch(() => ({}))
-        setError(data.error || 'Zapis nie powiódł się. Spróbuj ponownie później.')
+        setError(data.error || F.newsletterError)
         setStatus('error')
       }
     } catch {
-      setError('Zapis nie powiódł się. Spróbuj ponownie później.')
+      setError(F.newsletterError)
       setStatus('error')
     }
   }
@@ -32,7 +35,7 @@ function NewsletterForm() {
   if (status === 'sent') {
     return (
       <p className="font-sans text-[12px] text-gold-400 leading-relaxed">
-        Dziękujemy! Sprawdź skrzynkę i potwierdź zapis klikając w link w wiadomości.
+        {F.newsletterSuccess}
       </p>
     )
   }
@@ -45,13 +48,13 @@ function NewsletterForm() {
           required
           value={email}
           onChange={(e) => { setEmail(e.target.value); if (status === 'error') setStatus('idle') }}
-          placeholder="Twój adres e-mail"
+          placeholder={F.newsletterPlaceholder}
           className="flex-1 min-w-0 bg-white/5 border border-white/10 border-r-0 px-3 py-2.5 text-[12px] text-white placeholder-white/25 font-sans focus:outline-none focus:border-gold-500/50 transition-colors"
         />
         <button
           type="submit"
           disabled={status === 'sending'}
-          aria-label="Zapisz się do newslettera"
+          aria-label={F.newsletterAriaLabel}
           className="px-3.5 border border-gold-500/50 text-gold-400 hover:bg-gold-500/10 transition-colors duration-300 disabled:opacity-50"
         >
           <ArrowRight size={14} />
@@ -61,8 +64,7 @@ function NewsletterForm() {
         <p className="font-sans text-[11px] text-red-400/80">{error}</p>
       )}
       <p className="font-sans text-[10px] text-white/20 leading-relaxed">
-        Zapisując się wyrażasz zgodę na otrzymywanie informacji od Kancelarii.
-        Możesz wypisać się w każdej chwili.
+        {F.newsletterConsent}
       </p>
     </form>
   )
@@ -70,6 +72,10 @@ function NewsletterForm() {
 
 export default function Footer() {
   const year = new Date().getFullYear()
+  const { T } = useLang()
+  const F = T.footer
+
+  const practiceShort = T.practiceShort
 
   return (
     <footer className="border-t border-white/5 bg-navy-950">
@@ -77,9 +83,9 @@ export default function Footer() {
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-10 mb-14">
           <div className="lg:col-span-1">
             <p className="font-serif text-lg text-gold-400 tracking-widest2 mb-1">KANCELARIA</p>
-            <p className="font-sans text-[10px] tracking-[0.3em] text-white/30 uppercase mb-5">Radcy Prawnego Jacka Dombkowskiego</p>
+            <p className="font-sans text-[10px] tracking-[0.3em] text-white/30 uppercase mb-5">{T.nav.subtitle}</p>
             <p className="font-sans text-[12px] text-white/35 leading-relaxed">
-              Profesjonalna pomoc prawna dla osób fizycznych i przedsiębiorców.
+              {F.tagline}
             </p>
             <a
               href="https://linkedin.com"
@@ -92,15 +98,15 @@ export default function Footer() {
             </a>
 
             <div id="newsletter" className="mt-8">
-              <p className="font-sans text-[10px] tracking-[0.25em] uppercase text-gold-400/70 mb-3">Newsletter</p>
+              <p className="font-sans text-[10px] tracking-[0.25em] uppercase text-gold-400/70 mb-3">{F.newsletterLabel}</p>
               <NewsletterForm />
             </div>
           </div>
 
           <div>
-            <p className="font-sans text-[10px] tracking-[0.25em] uppercase text-gold-400/70 mb-5">Praktyka</p>
+            <p className="font-sans text-[10px] tracking-[0.25em] uppercase text-gold-400/70 mb-5">{F.sectionPractice}</p>
             <ul className="space-y-3">
-              {['Prawo cywilne', 'Prawo gospodarcze', 'Prawo pracy', 'Prawo administracyjne', 'Zamówienia publiczne', 'Prawo medyczne', 'Prawo budowlane', 'Prawo własności intelektualnej'].map((l) => (
+              {practiceShort.map((l) => (
                 <li key={l}>
                   <NavLink to="/praktyka" className="font-sans text-[12px] text-white/35 hover:text-gold-400 transition-colors">
                     {l}
@@ -111,12 +117,9 @@ export default function Footer() {
           </div>
 
           <div>
-            <p className="font-sans text-[10px] tracking-[0.25em] uppercase text-gold-400/70 mb-5">Kancelaria</p>
+            <p className="font-sans text-[10px] tracking-[0.25em] uppercase text-gold-400/70 mb-5">{F.sectionFirm}</p>
             <ul className="space-y-3">
-              {[
-                { label: 'O kancelarii', to: '/o-kancelarii' },
-                { label: 'Kontakt', to: '/kontakt' },
-              ].map((l) => (
+              {F.firmLinks.map((l) => (
                 <li key={l.label}>
                   <NavLink to={l.to} className="font-sans text-[12px] text-white/35 hover:text-gold-400 transition-colors">
                     {l.label}
@@ -127,13 +130,9 @@ export default function Footer() {
           </div>
 
           <div>
-            <p className="font-sans text-[10px] tracking-[0.25em] uppercase text-gold-400/70 mb-5">Dokumenty</p>
+            <p className="font-sans text-[10px] tracking-[0.25em] uppercase text-gold-400/70 mb-5">{F.sectionDocs}</p>
             <ul className="space-y-3">
-              {[
-                { label: 'Polityka prywatności', to: '/polityka-prywatnosci' },
-                { label: 'Cookies', to: '/cookies' },
-                { label: 'RODO', to: '/rodo' },
-              ].map((l) => (
+              {F.docsLinks.map((l) => (
                 <li key={l.label}>
                   <NavLink to={l.to} className="font-sans text-[12px] text-white/35 hover:text-gold-400 transition-colors">
                     {l.label}
@@ -146,10 +145,10 @@ export default function Footer() {
 
         <div className="pt-8 border-t border-white/5 flex flex-col sm:flex-row items-center justify-between gap-4">
           <p className="font-sans text-[11px] text-white/20">
-            © {year} Kancelaria Radcy Prawnego Jacek Dombkowski. Wszelkie prawa zastrzeżone.
+            {F.copyright(year)}
           </p>
           <p className="font-sans text-[11px] text-white/15">
-            Wpis na listę radców prawnych OIRP w Krakowie
+            {F.oirp}
           </p>
         </div>
       </div>
