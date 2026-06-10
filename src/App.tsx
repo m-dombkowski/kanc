@@ -4,6 +4,7 @@ import Navbar from './components/Navbar'
 import Footer from './components/Footer'
 import ScrollToTop from './components/ScrollToTop'
 import CookieBanner from './components/CookieBanner'
+import NewsletterToast from './components/NewsletterToast'
 import Home from './pages/Home'
 import AboutPage from './pages/AboutPage'
 import PracticePage from './pages/PracticePage'
@@ -34,6 +35,7 @@ export default function App() {
         </main>
         <Footer />
         <CookieBanner />
+        <NewsletterToast />
       </div>
     </BrowserRouter>
   )
