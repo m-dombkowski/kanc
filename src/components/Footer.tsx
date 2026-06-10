@@ -1,5 +1,72 @@
+import { useState } from 'react'
 import { NavLink } from 'react-router-dom'
-import { Linkedin } from 'lucide-react'
+import { Linkedin, ArrowRight } from 'lucide-react'
+
+function NewsletterForm() {
+  const [email, setEmail] = useState('')
+  const [status, setStatus] = useState<'idle' | 'sending' | 'sent' | 'error'>('idle')
+  const [error, setError] = useState('')
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault()
+    setStatus('sending')
+    try {
+      const res = await fetch('/.netlify/functions/newsletter', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email }),
+      })
+      if (res.ok) {
+        setStatus('sent')
+      } else {
+        const data = await res.json().catch(() => ({}))
+        setError(data.error || 'Zapis nie powiódł się. Spróbuj ponownie później.')
+        setStatus('error')
+      }
+    } catch {
+      setError('Zapis nie powiódł się. Spróbuj ponownie później.')
+      setStatus('error')
+    }
+  }
+
+  if (status === 'sent') {
+    return (
+      <p className="font-sans text-[12px] text-gold-400 leading-relaxed">
+        Dziękujemy! Sprawdź skrzynkę i potwierdź zapis klikając w link w wiadomości.
+      </p>
+    )
+  }
+
+  return (
+    <form onSubmit={handleSubmit} className="flex flex-col gap-2">
+      <div className="flex">
+        <input
+          type="email"
+          required
+          value={email}
+          onChange={(e) => { setEmail(e.target.value); if (status === 'error') setStatus('idle') }}
+          placeholder="Twój adres e-mail"
+          className="flex-1 min-w-0 bg-white/5 border border-white/10 border-r-0 px-3 py-2.5 text-[12px] text-white placeholder-white/25 font-sans focus:outline-none focus:border-gold-500/50 transition-colors"
+        />
+        <button
+          type="submit"
+          disabled={status === 'sending'}
+          aria-label="Zapisz się do newslettera"
+          className="px-3.5 border border-gold-500/50 text-gold-400 hover:bg-gold-500/10 transition-colors duration-300 disabled:opacity-50"
+        >
+          <ArrowRight size={14} />
+        </button>
+      </div>
+      {status === 'error' && (
+        <p className="font-sans text-[11px] text-red-400/80">{error}</p>
+      )}
+      <p className="font-sans text-[10px] text-white/20 leading-relaxed">
+        Zapisując się wyrażasz zgodę na otrzymywanie informacji od Kancelarii.
+        Możesz wypisać się w każdej chwili.
+      </p>
+    </form>
+  )
+}
 
 export default function Footer() {
   const year = new Date().getFullYear()
@@ -23,6 +90,11 @@ export default function Footer() {
               <Linkedin size={15} />
               <span className="font-sans text-[11px] tracking-wide">LinkedIn</span>
             </a>
+
+            <div className="mt-8">
+              <p className="font-sans text-[10px] tracking-[0.25em] uppercase text-gold-400/70 mb-3">Newsletter</p>
+              <NewsletterForm />
+            </div>
           </div>
 
           <div>
