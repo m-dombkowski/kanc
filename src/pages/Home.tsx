@@ -1,5 +1,5 @@
 import { useEffect, useRef } from 'react'
-import { motion } from 'framer-motion'
+import { motion, useInView } from 'framer-motion'
 import { NavLink } from 'react-router-dom'
 import { ArrowRight, ArrowDown } from 'lucide-react'
 import PageTransition from '../components/PageTransition'
@@ -14,6 +14,39 @@ const practiceShort = [
   'Prawo budowlane',
   'Prawo własności intelektualnej',
 ]
+
+// CSS-driven reveal: pills are hidden via CSS class from the very first render,
+// so there is no first-frame flash; the animation starts once the block scrolls
+// into view.
+function PracticePills() {
+  const ref = useRef<HTMLDivElement>(null)
+  const inView = useInView(ref, { once: true, margin: '-60px' })
+
+  return (
+    <div ref={ref} className="flex flex-wrap gap-3">
+      {practiceShort.map((area, i) => (
+        <div
+          key={area}
+          className={`${inView ? 'anim-fade-in-up' : 'opacity-0'} glass px-5 py-3 text-[13px] font-sans text-white/60 hover:text-gold-400 hover:border-gold-500/30 transition-colors duration-300 cursor-default`}
+          style={inView ? { animationDelay: `${i * 0.07}s` } : undefined}
+        >
+          {area}
+        </div>
+      ))}
+      <div
+        className={inView ? 'anim-fade-in-up' : 'opacity-0'}
+        style={inView ? { animationDelay: `${practiceShort.length * 0.07}s` } : undefined}
+      >
+        <NavLink
+          to="/praktyka"
+          className="inline-flex items-center gap-2 px-5 py-3 border border-gold-500/40 text-gold-400 text-[13px] font-sans hover:bg-gold-500/10 transition-all duration-300"
+        >
+          Pełna lista <ArrowRight size={12} />
+        </NavLink>
+      </div>
+    </div>
+  )
+}
 
 export default function Home() {
   const canvasRef = useRef<HTMLCanvasElement>(null)
@@ -208,33 +241,7 @@ export default function Home() {
             </div>
 
             {/* Practice areas pills */}
-            <div className="flex flex-wrap gap-3">
-              {practiceShort.map((area, i) => (
-                <motion.div
-                  key={area}
-                  initial={{ opacity: 0, y: 14 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, margin: '-60px' }}
-                  transition={{ duration: 0.5, delay: i * 0.07 }}
-                  className="glass px-5 py-3 text-[13px] font-sans text-white/60 hover:text-gold-400 hover:border-gold-500/30 transition-all duration-300 cursor-default"
-                >
-                  {area}
-                </motion.div>
-              ))}
-              <motion.div
-                initial={{ opacity: 0, y: 14 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: 0.5 }}
-              >
-                <NavLink
-                  to="/praktyka"
-                  className="inline-flex items-center gap-2 px-5 py-3 border border-gold-500/40 text-gold-400 text-[13px] font-sans hover:bg-gold-500/10 transition-all duration-300"
-                >
-                  Pełna lista <ArrowRight size={12} />
-                </NavLink>
-              </motion.div>
-            </div>
+            <PracticePills />
           </div>
         </div>
       </section>
