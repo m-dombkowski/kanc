@@ -4,7 +4,7 @@ import { Scale, Building2, Users, ShieldCheck, FileSearch, Stethoscope, HardHat,
 import { NavLink } from 'react-router-dom'
 import PageTransition from '../components/PageTransition'
 
-const PAGE_DELAY = 0.5
+const PAGE_DELAY = 0.1
 
 const areas = [
   {
@@ -146,7 +146,7 @@ export default function PracticePage() {
                 initial={{ opacity: 0, y: 28 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: '-40px' }}
-                transition={{ duration: 0.65, delay: i * 0.07 }}
+                transition={{ duration: 0.65, delay: 0.3 + i * 0.07 }}
                 onClick={() => setActive(active === i ? null : i)}
                 className={`glass p-7 cursor-pointer group transition-colors duration-300 ${
                   active === i ? 'border-gold-500/40 bg-gold-500/5' : 'hover:border-gold-500/20'

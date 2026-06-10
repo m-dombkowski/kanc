@@ -42,7 +42,7 @@ export default function Navbar() {
         <div className="max-w-7xl mx-auto px-6 lg:px-12 flex items-center justify-between h-20">
           <NavLink to="/" className="flex flex-col leading-none" onClick={() => setOpen(false)}>
             <span className="font-serif text-xl text-gold-400 font-light tracking-widest2">KANCELARIA</span>
-            <span className="font-sans text-[10px] tracking-[0.3em] text-white/50 uppercase mt-0.5">Radcy Prawnego Jacka Dombkowskiego</span>
+            <span className="font-sans text-[8px] tracking-[0.18em] sm:text-[10px] sm:tracking-[0.3em] text-white/50 uppercase mt-0.5">Radcy Prawnego Jacka Dombkowskiego</span>
           </NavLink>
 
           {/* Desktop nav */}
