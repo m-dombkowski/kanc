@@ -4,6 +4,7 @@ const t = {
   pl: {
     // ── Navbar ──────────────────────────────────────────────
     nav: {
+      firmName: 'KANCELARIA',
       about: 'O kancelarii',
       practice: 'Zakres praktyki',
       contact: 'Kontakt',
@@ -274,15 +275,16 @@ const t = {
   // ════════════════════════════════════════════════════════════
   en: {
     nav: {
+      firmName: 'LAW OFFICE',
       about: 'About',
       practice: 'Practice Areas',
       contact: 'Contact',
-      bottomBar: 'Law Office of Attorney Jacek Dombkowski',
-      subtitle: 'Attorney Jacek Dombkowski',
+      bottomBar: 'Law Office of Attorney-at-Law Jacek Dombkowski',
+      subtitle: 'Attorney-at-Law Jacek Dombkowski',
     },
 
     home: {
-      heroBadge: 'Law Office of Attorney Jacek Dombkowski',
+      heroBadge: 'Law Office of Attorney-at-Law Jacek Dombkowski',
       heroH1a: 'Law',
       heroH1b: 'in service of',
       heroH1c: 'your interests.',
@@ -292,7 +294,7 @@ const t = {
       heroCtaSecondary: 'Practice areas',
       heroScroll: 'Scroll',
       introBadge: 'Jacek Dombkowski',
-      introH2a: 'Attorney with years of experience serving',
+      introH2a: 'Attorney-at-Law with years of experience serving',
       introH2b: 'businesses and private clients.',
       introDesc:
         'The firm offers comprehensive legal services, combining in-depth knowledge of the law with a practical approach to every case. Integrity, discretion and effectiveness are the values on which we build lasting relationships with our clients.',

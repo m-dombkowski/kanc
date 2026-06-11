@@ -87,7 +87,7 @@ export default function Footer() {
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-10 mb-14">
           <div className="lg:col-span-1">
             <p className="font-serif text-lg text-gold-400 tracking-widest2 mb-1">
-              KANCELARIA
+              {T.nav.firmName}
             </p>
             <p className="font-sans text-[10px] tracking-[0.3em] text-white/30 uppercase mb-5">
               {T.nav.subtitle}
