@@ -231,8 +231,9 @@ export default function Home() {
       </section>
 
       {/* CTA STRIP */}
-      <section className="relative py-20 overflow-hidden bg-navy-950">
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_50%_50%,rgba(201,165,90,0.08),transparent_65%)]" />
+      <section className="relative py-20 overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-br from-navy-950 via-navy-900 to-navy-950" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_50%_50%,rgba(201,165,90,0.06),transparent_65%)]" />
         <div className="relative max-w-7xl mx-auto px-6 lg:px-12 text-center">
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
