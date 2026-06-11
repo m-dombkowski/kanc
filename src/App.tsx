@@ -10,6 +10,7 @@ import Home from './pages/Home'
 import AboutPage from './pages/AboutPage'
 import PracticePage from './pages/PracticePage'
 import ContactPage from './pages/ContactPage'
+import NotFoundPage from './pages/NotFoundPage'
 
 function AnimatedRoutes() {
   const location = useLocation()
@@ -20,6 +21,7 @@ function AnimatedRoutes() {
         <Route path="/o-kancelarii" element={<AboutPage />} />
         <Route path="/praktyka" element={<PracticePage />} />
         <Route path="/kontakt" element={<ContactPage />} />
+        <Route path="*" element={<NotFoundPage />} />
       </Routes>
     </AnimatePresence>
   )
