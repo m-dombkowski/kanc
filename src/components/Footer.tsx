@@ -76,7 +76,7 @@ function NewsletterForm() {
 
 export default function Footer() {
   const year = new Date().getFullYear();
-  const { T } = useLang();
+  const { T, lang } = useLang();
   const F = T.footer;
 
   const practiceShort = T.practiceShort;
@@ -171,6 +171,19 @@ export default function Footer() {
             {F.copyright(year)}
           </p>
           <p className="font-sans text-[11px] text-white/15">{F.oirp}</p>
+        </div>
+        <div className="pt-4 flex justify-center">
+          <p className="font-sans text-[10px] text-white/15">
+            {lang === 'en' ? 'Made by' : 'Stworzone przez'}{' '}
+            <a
+              href="https://mdombkowski.netlify.app/"
+              target="_blank"
+              rel="noreferrer"
+              className="hover:text-white/40 transition-colors duration-300"
+            >
+              Mateusz Dombkowski
+            </a>
+          </p>
         </div>
       </div>
     </footer>
