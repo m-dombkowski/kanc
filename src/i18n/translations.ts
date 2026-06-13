@@ -9,12 +9,12 @@ const t = {
       practice: 'Zakres praktyki',
       contact: 'Kontakt',
       bottomBar: 'Kancelaria Radcy Prawnego · Jacek Dombkowski',
-      subtitle: 'Radcy Prawnego Jacka Dombkowskiego',
+      subtitle: 'Radcy Prawnego Jacek Dombkowski',
     },
 
     // ── Home ────────────────────────────────────────────────
     home: {
-      heroBadge: 'Kancelaria Radcy Prawnego Jacka Dombkowskiego',
+      heroBadge: 'Kancelaria Radcy Prawnego Jacek Dombkowski',
       heroH1a: 'Prawo',
       heroH1b: 'w służbie',
       heroH1c: 'Twojego interesu.',
@@ -25,7 +25,7 @@ const t = {
       heroScroll: 'Przewiń',
       introBadge: 'Jacek Dombkowski',
       introH2a: 'Radca prawny z wieloletnim doświadczeniem w obsłudze',
-      introH2b: 'przedsiębiorców i osób prywatnych.',
+      introH2b: 'przedsiębiorców i osób fizycznych.',
       introDesc:
         'Kancelaria oferuje kompleksową obsługę prawną, łącząc dogłębną znajomość prawa z praktycznym podejściem do każdej sprawy. Rzetelność, dyskrecja i skuteczność to wartości, na których budujemy długotrwałe relacje z Klientami.',
       introLink: 'Poznaj kancelarię',
