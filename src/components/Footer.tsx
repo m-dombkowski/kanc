@@ -60,7 +60,7 @@ function NewsletterForm() {
           type="submit"
           disabled={status === "sending"}
           aria-label={F.newsletterAriaLabel}
-          className="px-3.5 border border-gold-500/50 text-gold-400 hover:bg-gold-500/10 transition-colors duration-300 disabled:opacity-50">
+          className="px-3.5 border border-gold-500/50 text-gold-400 hover:bg-gold-500/10 active:scale-[0.97] transition-[transform,background-color] duration-150 disabled:opacity-50">
           <ArrowRight size={14} />
         </button>
       </div>

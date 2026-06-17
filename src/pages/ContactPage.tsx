@@ -79,7 +79,7 @@ export default function ContactPage() {
                   <a
                     key={item.label}
                     href={item.href}
-                    className="anim-fade-in-up glass p-5 group hover:border-gold-500/25 transition-all duration-300 block"
+                    className="anim-fade-in-up glass p-5 group hover:border-gold-500/25 transition-[border-color] duration-200 block"
                     style={{ animationDelay: `${PAGE_DELAY + i * 0.08}s` }}
                   >
                     <item.icon size={15} className="text-gold-500 mb-3" />
@@ -188,7 +188,7 @@ export default function ContactPage() {
                 <button
                   type="submit"
                   disabled={status === 'sending' || status === 'sent'}
-                  className="mt-1 px-8 py-4 bg-gold-500 text-navy-950 font-sans font-medium text-xs tracking-[0.2em] uppercase hover:bg-gold-400 transition-colors duration-300 disabled:opacity-60 disabled:cursor-not-allowed"
+                  className="mt-1 px-8 py-4 bg-gold-500 text-navy-950 font-sans font-medium text-xs tracking-[0.2em] uppercase hover:bg-gold-400 active:scale-[0.97] transition-[transform,background-color] duration-150 disabled:opacity-60 disabled:cursor-not-allowed"
                 >
                   {status === 'sending' ? C.submitSending : status === 'sent' ? C.submitSent : C.submitIdle}
                 </button>

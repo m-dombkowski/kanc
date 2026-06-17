@@ -179,7 +179,7 @@ export default function AboutPage() {
                 className="mt-10">
                 <NavLink
                   to="/kontakt"
-                  className="inline-flex items-center gap-3 px-8 py-4 bg-gold-500 text-navy-950 font-sans font-medium text-xs tracking-[0.2em] uppercase hover:bg-gold-400 transition-colors duration-300">
+                  className="inline-flex items-center gap-3 px-8 py-4 bg-gold-500 text-navy-950 font-sans font-medium text-xs tracking-[0.2em] uppercase hover:bg-gold-400 active:scale-[0.97] transition-[transform,background-color] duration-150">
                   {T.about.contactCta}
                 </NavLink>
               </motion.div>

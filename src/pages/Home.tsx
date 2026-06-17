@@ -148,13 +148,13 @@ export default function Home() {
             >
               <NavLink
                 to="/kontakt"
-                className="inline-flex items-center justify-center px-8 py-4 bg-gold-500 text-navy-950 font-sans font-medium text-xs tracking-[0.2em] uppercase hover:bg-gold-400 transition-colors duration-300"
+                className="inline-flex items-center justify-center px-8 py-4 bg-gold-500 text-navy-950 font-sans font-medium text-xs tracking-[0.2em] uppercase hover:bg-gold-400 active:scale-[0.97] transition-[transform,background-color] duration-150"
               >
                 {T.home.heroCtaPrimary}
               </NavLink>
               <NavLink
                 to="/praktyka"
-                className="inline-flex items-center justify-center px-8 py-4 border border-white/20 text-white/70 font-sans text-xs tracking-[0.2em] uppercase hover:border-gold-500/50 hover:text-gold-400 transition-all duration-300"
+                className="inline-flex items-center justify-center px-8 py-4 border border-white/20 text-white/70 font-sans text-xs tracking-[0.2em] uppercase hover:border-gold-500/50 hover:text-gold-400 active:scale-[0.97] transition-[transform,color,border-color] duration-150"
               >
                 {T.home.heroCtaSecondary}
               </NavLink>
@@ -169,7 +169,7 @@ export default function Home() {
           className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
         >
           <span className="font-sans text-[10px] tracking-[0.25em] uppercase text-white/30">{T.home.heroScroll}</span>
-          <motion.div animate={{ y: [0, 6, 0] }} transition={{ duration: 1.8, repeat: Infinity }}>
+          <motion.div animate={{ y: [0, 6, 0] }} transition={{ duration: 1.8, repeat: Infinity, ease: 'easeInOut' }}>
             <ArrowDown size={14} className="text-gold-500/60" />
           </motion.div>
         </motion.div>
@@ -217,10 +217,10 @@ export default function Home() {
               >
                 <NavLink
                   to="/o-kancelarii"
-                  className="inline-flex items-center gap-3 font-sans text-xs tracking-[0.2em] uppercase text-gold-400 hover:gap-5 transition-all duration-300 group"
+                  className="inline-flex items-center gap-3 font-sans text-xs tracking-[0.2em] uppercase text-gold-400 group"
                 >
                   {T.home.introLink}
-                  <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
+                  <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform duration-200" />
                 </NavLink>
               </motion.div>
             </div>
@@ -238,7 +238,7 @@ export default function Home() {
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+            viewport={{ once: true, margin: '-60px' }}
             transition={{ duration: 0.7 }}
             className="font-serif font-light text-3xl lg:text-4xl text-white mb-6"
           >
@@ -248,12 +248,12 @@ export default function Home() {
           <motion.div
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+            viewport={{ once: true, margin: '-60px' }}
             transition={{ duration: 0.5, delay: 0.15 }}
           >
             <NavLink
               to="/kontakt"
-              className="inline-flex items-center gap-3 px-10 py-4 bg-gold-500 text-navy-950 font-sans font-medium text-xs tracking-[0.2em] uppercase hover:bg-gold-400 transition-colors duration-300"
+              className="inline-flex items-center gap-3 px-10 py-4 bg-gold-500 text-navy-950 font-sans font-medium text-xs tracking-[0.2em] uppercase hover:bg-gold-400 active:scale-[0.97] transition-[transform,background-color] duration-150"
             >
               {T.home.ctaBtn} <ArrowRight size={14} />
             </NavLink>

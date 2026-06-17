@@ -60,7 +60,7 @@ export default function PracticePage() {
                     active === i ? 'border-gold-500/40 bg-gold-500/5' : 'hover:border-gold-500/20'
                   }`}
                 >
-                  <div className={`w-10 h-10 rounded-full border flex items-center justify-center mb-5 transition-all duration-300 ${
+                  <div className={`w-10 h-10 rounded-full border flex items-center justify-center mb-5 transition-[border-color,background-color] duration-200 ${
                     active === i ? 'border-gold-500 bg-gold-500/10' : 'border-white/10 group-hover:border-gold-500/40'
                   }`}>
                     <Icon size={16} className={`transition-colors duration-300 ${active === i ? 'text-gold-400' : 'text-white/40 group-hover:text-gold-400'}`} />
@@ -110,7 +110,7 @@ export default function PracticePage() {
           </motion.p>
           <NavLink
             to="/kontakt"
-            className="inline-flex items-center gap-3 px-8 py-4 bg-gold-500 text-navy-950 font-sans font-medium text-xs tracking-[0.2em] uppercase hover:bg-gold-400 transition-colors duration-300"
+            className="inline-flex items-center gap-3 px-8 py-4 bg-gold-500 text-navy-950 font-sans font-medium text-xs tracking-[0.2em] uppercase hover:bg-gold-400 active:scale-[0.97] transition-[transform,background-color] duration-150"
           >
             {T.practice.ctaBtn}
           </NavLink>
