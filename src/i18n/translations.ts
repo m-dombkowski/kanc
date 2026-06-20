@@ -96,6 +96,7 @@ const t = {
             'Ochrona dóbr osobistych',
             'Dochodzenie roszczeń odszkodowawczych',
             'Spory o zapłatę i egzekucja należności',
+            'Przygotowanie i kompleksowa obsługa umów',
           ],
         },
         {
