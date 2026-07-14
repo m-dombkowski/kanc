@@ -35,7 +35,7 @@ export default function CookieBanner() {
           <div className="max-w-7xl mx-auto px-6 lg:px-12 py-5 flex flex-col sm:flex-row items-start sm:items-center gap-5 justify-between">
             <p className="font-sans text-[12px] text-white/50 leading-relaxed max-w-2xl">
               {T.cookie.text}{' '}
-              <a href="/polityka-prywatnosci.pdf" className="text-gold-500/80 hover:text-gold-400 underline underline-offset-2 transition-colors">
+              <a href="/polityka-prywatnosci.pdf" target="_blank" rel="noreferrer" className="text-gold-500/80 hover:text-gold-400 underline underline-offset-2 transition-colors">
                 {T.cookie.privacyLink}
               </a>
               .

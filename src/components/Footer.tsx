@@ -157,6 +157,7 @@ export default function Footer() {
                 <li key={l.label}>
                   <a
                     href={l.to}
+                    {...(l.to.endsWith('.pdf') && { target: '_blank', rel: 'noreferrer' })}
                     className="font-sans text-[12px] text-white/35 hover:text-gold-400 transition-colors">
                     {l.label}
                   </a>
