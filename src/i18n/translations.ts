@@ -230,7 +230,6 @@ const t = {
       ],
       docsLinks: [
         { label: 'Polityka prywatności', to: '/polityka-prywatnosci.pdf' },
-        { label: 'Cookies', to: '/cookies' },
         { label: 'RODO', to: '/rodo.pdf' },
       ],
       newsletterLabel: 'Newsletter',
@@ -496,7 +495,6 @@ const t = {
       ],
       docsLinks: [
         { label: 'Privacy Policy', to: '/polityka-prywatnosci.pdf' },
-        { label: 'Cookies', to: '/cookies' },
         { label: 'GDPR', to: '/rodo.pdf' },
       ],
       newsletterLabel: 'Newsletter',
