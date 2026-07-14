@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { NavLink } from 'react-router-dom'
 import { useLang } from '../contexts/LanguageContext'
 
 export default function CookieBanner() {
@@ -36,9 +35,9 @@ export default function CookieBanner() {
           <div className="max-w-7xl mx-auto px-6 lg:px-12 py-5 flex flex-col sm:flex-row items-start sm:items-center gap-5 justify-between">
             <p className="font-sans text-[12px] text-white/50 leading-relaxed max-w-2xl">
               {T.cookie.text}{' '}
-              <NavLink to="/polityka-prywatnosci" className="text-gold-500/80 hover:text-gold-400 underline underline-offset-2 transition-colors">
+              <a href="/polityka-prywatnosci.pdf" className="text-gold-500/80 hover:text-gold-400 underline underline-offset-2 transition-colors">
                 {T.cookie.privacyLink}
-              </NavLink>
+              </a>
               .
             </p>
             <div className="flex items-center gap-3 flex-shrink-0">

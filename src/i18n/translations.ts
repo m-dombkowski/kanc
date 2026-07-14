@@ -229,9 +229,9 @@ const t = {
         { label: 'Kontakt', to: '/kontakt' },
       ],
       docsLinks: [
-        { label: 'Polityka prywatności', to: '/polityka-prywatnosci' },
+        { label: 'Polityka prywatności', to: '/polityka-prywatnosci.pdf' },
         { label: 'Cookies', to: '/cookies' },
-        { label: 'RODO', to: '/rodo' },
+        { label: 'RODO', to: '/rodo.pdf' },
       ],
       newsletterLabel: 'Newsletter',
       newsletterPlaceholder: 'Twój adres e-mail',
@@ -495,9 +495,9 @@ const t = {
         { label: 'Contact', to: '/kontakt' },
       ],
       docsLinks: [
-        { label: 'Privacy Policy', to: '/polityka-prywatnosci' },
+        { label: 'Privacy Policy', to: '/polityka-prywatnosci.pdf' },
         { label: 'Cookies', to: '/cookies' },
-        { label: 'GDPR', to: '/rodo' },
+        { label: 'GDPR', to: '/rodo.pdf' },
       ],
       newsletterLabel: 'Newsletter',
       newsletterPlaceholder: 'Your e-mail address',

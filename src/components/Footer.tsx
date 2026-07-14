@@ -155,11 +155,11 @@ export default function Footer() {
             <ul className="space-y-3">
               {F.docsLinks.map((l) => (
                 <li key={l.label}>
-                  <NavLink
-                    to={l.to}
+                  <a
+                    href={l.to}
                     className="font-sans text-[12px] text-white/35 hover:text-gold-400 transition-colors">
                     {l.label}
-                  </NavLink>
+                  </a>
                 </li>
               ))}
             </ul>
