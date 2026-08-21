@@ -2,6 +2,19 @@ import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { useLang } from '../contexts/LanguageContext'
 
+declare global {
+  interface Window {
+    gtag?: (...args: unknown[]) => void
+  }
+}
+
+/** Google Consent Mode v2 — flips analytics storage on the user's choice. */
+function updateConsent(granted: boolean) {
+  window.gtag?.('consent', 'update', {
+    analytics_storage: granted ? 'granted' : 'denied',
+  })
+}
+
 export default function CookieBanner() {
   const [visible, setVisible] = useState(false)
   const { T } = useLang()
@@ -14,11 +27,13 @@ export default function CookieBanner() {
 
   const accept = () => {
     localStorage.setItem('cookies-accepted', 'true')
+    updateConsent(true)
     setVisible(false)
   }
 
   const decline = () => {
     localStorage.setItem('cookies-accepted', 'false')
+    updateConsent(false)
     setVisible(false)
   }
 
