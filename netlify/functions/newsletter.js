@@ -38,6 +38,7 @@ export const handler = async (event) => {
         // 'unconfirmed' triggers MailerLite's double opt-in confirmation e-mail
         // when double opt-in is enabled in the MailerLite account settings.
         status: 'unconfirmed',
+        ...(process.env.MAILERLITE_GROUP_ID && { groups: [process.env.MAILERLITE_GROUP_ID] }),
       }),
     })
 
