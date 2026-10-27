@@ -177,7 +177,7 @@ export default function Footer() {
           <p className="font-sans text-[10px] text-white/15">
             {lang === 'en' ? 'Made by' : 'Stworzone przez'}{' '}
             <a
-              href="https://mdombkowski.netlify.app/"
+              href="https://inkeye.pl"
               target="_blank"
               rel="noreferrer"
               className="hover:text-white/40 transition-colors duration-300"
